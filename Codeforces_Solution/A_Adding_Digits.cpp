@@ -20,11 +20,6 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-bool isNumber(const string& s)
-{
-    return all_of(s.begin(), s.end(),
-                  [](char c){ return isdigit(c) != 0; });
-}
 int binExp(int a, int b){ 
     a %= mod;
     int ans = 1;
@@ -43,31 +38,31 @@ bool isPowerof2(int n){
 int countDigit(int n){
     return floor(log10(n) + 1);
 }
+int solve(int n){
+
+}
 int main(){
     fastIO;
-    int n,v;
-	cin>>n;
-	int cnt[5]={0};
-	for(int i=1;i<=n;i++)
-	{
-		cin>>v;
-		cnt[v]++;
+    //input;
+    ll a,b,n;
+    cin>>a>>b>>n;
+    int flag=0;
+    a = a*10;
+    for(int i=0;i<=9;i++){
+        if(a%b==0){
+            flag=1;
+            break;
+        }
+        a+=1;
     }
-	int ans=cnt[4]+cnt[3];
-	if(cnt[3]<=cnt[1])
-		cnt[1]-=cnt[3];
-	else
-		cnt[1]=0;
-
-	ans+=cnt[2]/2;
-	if(cnt[2]%2==1)
-	{
-		ans++;
-	    cnt[1]=max(0,cnt[1]-2);
-	}
-
-	ans+=cnt[1]/4;
-	if(cnt[1]%4!=0)
-		ans++;
-	cout<<ans;
+    if(flag==1){
+        cout<<a;
+        loop(n-1){
+            cout<<0;
+        }
+    }
+    else{
+        cout<<-1<<endl;
+    }
+      
 }

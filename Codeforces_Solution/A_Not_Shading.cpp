@@ -22,41 +22,45 @@
 using namespace std;
 signed main()
 {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    input;
+    fastIO;
     tc{
-	    int n;
-		cin>>n;
-		vi v(n);
+	    int n, m, r, c;
+		cin>>n>>m>>r>>c;
+		char a[n][m];
+        int ct=0;
         for(int i=0;i<n;++i){
-            cin>>v[i];
-        }
-        int idx1 = -1;
-        int idx2 = -1;
-        for(int i=0;i<n;++i){
-            if(v[i]!=i+1){
-                idx1 = i+1;
-                break;
+            for(int j=0;j<m;++j){
+                cin>>a[i][j];
+                if(a[i][j]=='B') ct+=1;
             }
         }
-        if(idx1 == -1){
-            for(int i=0;i<n;++i){
-                cout<<v[i]<<" ";
-            }
+        int flag=0;
+        if(ct==0){
+            cout<<-1<<endl;
+        }
+        else if(a[r-1][c-1]=='B'){
+            cout<<0<<endl;
         }
         else{
-            for(int i=0;i<n;++i){
-                if(v[i]==idx1){
-                   idx2 = i;
-                   break;
+            for(int i=0;i<m;++i){
+                if(a[r-1][i]=='B'){
+                    flag=1;
+                    break;
                 }
             }
-            reverse(v.begin()+idx1-1,v.begin()+idx2+1);
             for(int i=0;i<n;++i){
-               cout<<v[i]<<" ";
+                if(a[i][c-1]=='B'){
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==1){
+                cout<<1<<endl;
+            }
+            else{
+                cout<<2<<endl;
             }
         }
-        cout<<endl;
 	}
     return 0;
 }

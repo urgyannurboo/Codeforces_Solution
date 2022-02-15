@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 #include<iomanip>
-#define ll long long
 #define loop(n) for(int i=0;i<n;i++)
 #define ff first
 #define ss second
@@ -11,20 +10,15 @@
 #define pb push_back
 #define pob pop_back
 #define ALL(v) v.begin(), v.end()
-#define tc   ll t;     cin>>t;   while(t--)
+#define tc int t; cin>>t; while(t--)
 #define INF 1000000000000000003
 #define in(x) cin >> (x)
 #define yes cout<<"YES"<<endl;
 #define no cout<<"NO"<<endl;
 #define mod 256;
-#define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+#define int long long 
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-bool isNumber(const string& s)
-{
-    return all_of(s.begin(), s.end(),
-                  [](char c){ return isdigit(c) != 0; });
-}
 int binExp(int a, int b){ 
     a %= mod;
     int ans = 1;
@@ -43,31 +37,30 @@ bool isPowerof2(int n){
 int countDigit(int n){
     return floor(log10(n) + 1);
 }
-int main(){
+signed main(){
     fastIO;
-    int n,v;
-	cin>>n;
-	int cnt[5]={0};
-	for(int i=1;i<=n;i++)
-	{
-		cin>>v;
-		cnt[v]++;
+    /*
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+    */
+    tc{
+        int n,x,a;
+        int even = 0,odd = 0;
+        cin>>n>>x;
+        loop(n){
+            in(a);
+            if(a % 2 == 1)odd++;
+            else even++;
+        }
+        int m = min(even,x-1);
+        int d = x - m;
+
+        if(d % 2 == 0){
+            d++;
+        }
+        if(odd >= d && d <= x) yes
+        else no
     }
-	int ans=cnt[4]+cnt[3];
-	if(cnt[3]<=cnt[1])
-		cnt[1]-=cnt[3];
-	else
-		cnt[1]=0;
-
-	ans+=cnt[2]/2;
-	if(cnt[2]%2==1)
-	{
-		ans++;
-	    cnt[1]=max(0,cnt[1]-2);
-	}
-
-	ans+=cnt[1]/4;
-	if(cnt[1]%4!=0)
-		ans++;
-	cout<<ans;
 }
