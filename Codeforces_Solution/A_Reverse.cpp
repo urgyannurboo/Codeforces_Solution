@@ -23,6 +23,7 @@ using namespace std;
 signed main()
 {
     fastIO;
+    input;
     tc{
 	    int n;
 		cin>>n;
