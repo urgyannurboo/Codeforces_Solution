@@ -19,34 +19,33 @@
 #define mod 256;
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-using namespace std;
-int main(){
+using namespace std; 
+bool is_prime(ll n){
+    for(ll i=2;i<=sqrt(n);++i){
+        if(n%i==0){
+            return false;
+        }
+    }
+    return true;
+}
+int main()
+{
     fastIO;
-    //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
-    }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
+    tc{
+
+	    ll a,b;
+	    cin>>a>>b;
+        if(a-b!=1){
+
+            no
         }
+        else{
+            if((a-b==1 and is_prime(a+b)) || (a+b==1 and is_prime(a-b))){
+                yes
+            }
+            else{
+                no
+            }
+        } 
     }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
 }

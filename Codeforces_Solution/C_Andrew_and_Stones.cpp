@@ -20,33 +20,25 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-int main(){
+int main()
+{
     fastIO;
-    //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
-    }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
+    tc{
+	    int n;
+	    cin>>n;
+	    vector<ll> v(n);
+        for(auto &i : v) in(i);
+        int max = *max_element(v.begin()+1,v.end()-1);
+        if(( n==3 && v[1]%2!=0 ) ||( max == 1 )){
             cout<<-1<<endl;
-            return 0;
         }
-    }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
+        else{
+            ll ans = 0;
+            for(int i=1;i<n-1;++i){
+                ans += (v[i]+1)/2;
+            }
+        cout<<ans<<endl;
         }
-    }
-    
+    } 
+    return 0;
 }

@@ -20,33 +20,42 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
+bool isNumber(const string& s)
+{
+    return all_of(s.begin(), s.end(),
+                  [](char c){ return isdigit(c) != 0; });
+}
+int binExp(int a, int b){ 
+    a %= mod;
+    int ans = 1;
+    while (b){
+        if (b & 1){
+          ans = (ans * a) % mod;
+        }
+       a = (a * a) % mod;
+       b >>= 1;
+    }
+    return ans;
+}
+bool isPowerof2(int n){
+    return !(n & (n - 1));
+}
+int countDigit(int n){
+    return floor(log10(n) + 1);
+}
 int main(){
     fastIO;
-    //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
+    //input
+    ll n;
+    cin>>n;
+    vector<ll>v(n+1);
+    for(int i=1;i<=n;++i){
+        cin>>v[i];
     }
-    for(auto i: m){
-        cout<<i.ff;
+    sort(v.begin()+1,v.end());
+    ll ans = 0;
+    for(int i=1;i<=n;++i){
+        ans+=(abs(i-v[i]));
     }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
-        }
-    }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
+    cout<<ans<<endl;
 }

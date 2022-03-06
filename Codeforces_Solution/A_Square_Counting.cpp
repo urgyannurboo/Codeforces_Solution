@@ -58,38 +58,15 @@ int countSetBits(int x){
     return count;
 }
 int log2(int x){int res = 0;while (x >>= 1)res++;return res;}
-int binarySearch( int a[] , int l, int r, int x) { while (l <= r) {  int m = l + (r-l)/2; if (a[m] == x) return m; if (a[m] < x) l = m + 1;else r= m - 1;}}
-void solve(){
-    string s;
-	cin >> s;
-	int pos = -1;
-	int maxi = INT_MIN;
-	int n = s.size();
-	for (int i = n - 2; i >= 0; i--) {
-		int sum = ((s[i]- '0') + (s[i + 1]- '0'));
-		if (sum >= 10) {
-			string rep = to_string(sum);
-			s[i] = rep[0];
-			s[i + 1] = rep[1];
-			cout << s << "\n";
-			return ;
-		}
-	}
-    int temp = ((s[0]-'0') + (s[1] - '0'));
-	string rep = to_string(temp);
-	s[0] = rep[0];
-	if (rep.size() == 2)
-		s[1] = rep[1];
-	else
-		s.erase(1, 1);
-    cout << s << "\n";
-}
+ll binarySearch( ll a[] , int l, int r, int x) { while (l <= r) {  int m = l + (r-l)/2; if (a[m] == x) return m; if (a[m] < x) l = m + 1;else r= m - 1;}}
 int main(){
+    fastIO;
     //input;
-    clock_t z = clock();
-	tc{
-        solve();
+    //vi v(n);
+    //for(int &it:v) cin>>it;
+    tc{
+        ll n,s;
+        cin>>n>>s;
+        cout<<s/(n*n)<<endl;
     }
-	//cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << "\n";
-	return 0;
 }

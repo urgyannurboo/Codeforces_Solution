@@ -10,7 +10,7 @@
 #define mp make_pair
 #define pb push_back
 #define pob pop_back
-#define ALL(v) v.begin(), v.end()
+#define all(v) v.begin(), v.end()
 #define tc   ll t;     cin>>t;   while(t--)
 #define INF 1000000000000000003
 #define in(x) cin >> (x)
@@ -20,33 +20,32 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
+void solve(){
+    int x;
+    cin>>x;
+    vi v;
+    int n = 9;
+    while(x>n && n>0){
+        v.insert(v.begin(),n);
+        x-=n;
+        n--;
+    }
+    if(x>n){
+        cout<<-1<<endl;
+        return ;
+    }
+    else{
+        v.insert(v.begin(),x);
+        for(auto i:v){
+            cout<<i;
+        }
+        cout<<endl;
+        return;
+    }
+}
 int main(){
-    fastIO;
     //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
+    tc{
+        solve();
     }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
-        }
-    }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
 }

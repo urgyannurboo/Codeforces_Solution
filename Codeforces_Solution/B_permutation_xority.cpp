@@ -27,6 +27,11 @@
 #define yes cout<<"YES"<<endl;
 #define no cout<<"NO"<<endl;
 #define mod 256;
+#ifdef Urgyan
+#define debug(x) cerr << #x<<" "; _print(x); cerr << endl;
+#else
+#define debug(x);
+#endif
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
@@ -57,39 +62,28 @@ int countSetBits(int x){
     }
     return count;
 }
-int log2(int x){int res = 0;while (x >>= 1)res++;return res;}
-int binarySearch( int a[] , int l, int r, int x) { while (l <= r) {  int m = l + (r-l)/2; if (a[m] == x) return m; if (a[m] < x) l = m + 1;else r= m - 1;}}
-void solve(){
-    string s;
-	cin >> s;
-	int pos = -1;
-	int maxi = INT_MIN;
-	int n = s.size();
-	for (int i = n - 2; i >= 0; i--) {
-		int sum = ((s[i]- '0') + (s[i + 1]- '0'));
-		if (sum >= 10) {
-			string rep = to_string(sum);
-			s[i] = rep[0];
-			s[i + 1] = rep[1];
-			cout << s << "\n";
-			return ;
-		}
-	}
-    int temp = ((s[0]-'0') + (s[1] - '0'));
-	string rep = to_string(temp);
-	s[0] = rep[0];
-	if (rep.size() == 2)
-		s[1] = rep[1];
-	else
-		s.erase(1, 1);
-    cout << s << "\n";
+int log2(int x){int res = 0;while (x >>= 1)res++;return res;
 }
 int main(){
-    //input;
-    clock_t z = clock();
-	tc{
-        solve();
+    fastIO;
+    input;
+    tc{
+        int n;
+        in(n);
+        if(n==2){
+            cout<<-1<<endl;
+            continue;
+        }
+        if(n&1){
+           for(int i=1;i<=n;++i){
+               cout<<i<<" ";
+            }
+            cout<<endl;
+            continue;
+        }
+        for(int i=n-1;i>=2;--i){
+           cout<<i<<" ";
+        }
+        cout<<n<<" "<<1<<endl;
     }
-	//cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC) << "\n";
-	return 0;
 }

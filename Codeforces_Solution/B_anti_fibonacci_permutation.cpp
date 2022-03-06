@@ -21,32 +21,28 @@
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
 int main(){
-    fastIO;
     //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
-    }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
+    tc{
+        int n;
+        cin>>n;
+        int z=n-1;
+        vi v(n);
+        for(int i=0;i<n;++i){
+            v[i] = i+1;
+        }
+        sort(ALL(v),greater<int>());
+        for(int i=0;i<n;++i){
+                cout<<v[i]<<" ";
+            }
+        cout<<endl;
+        int j = 0;
+        while(z--){
+            swap(v[0],v[j+1]);
+            for(int i=0;i<n;++i){
+                cout<<v[i]<<" ";
+            }
+            j+=1;
+            cout<<endl;
         }
     }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
 }

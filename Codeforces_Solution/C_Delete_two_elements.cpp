@@ -20,33 +20,35 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
+void solve(){
+    int n;
+    cin>>n;
+    vector<ll>v(n);
+    map<ll,ll>mp;
+    for(auto &i:v){
+        in(i);
+        mp[i]+=1;
+    }
+    long long sum = accumulate(ALL(v),0LL);
+    if ((2 * sum) % n != 0) {
+      cout<<0<<endl;
+    }
+    else{
+      ll ct=0;
+      ll sum_two = 2*sum/n;
+      for(int i=0;i<n;++i){
+          int x = v[i];
+          int y = sum_two - x;
+          if (mp.count(y)) ct += mp[y];
+          if (x == y) ct -= 1;
+        }
+       cout<<ct/2<<endl;
+    }
+    return;
+}
 int main(){
-    fastIO;
     //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
+    tc{
+       solve();
     }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
-        }
-    }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
 }

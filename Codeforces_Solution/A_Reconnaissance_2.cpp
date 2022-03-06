@@ -43,32 +43,24 @@ bool isPowerof2(int n){
 int countDigit(int n){
     return floor(log10(n) + 1);
 }
-int main(){
-    fastIO;
-	input;
-    int n,v;
-	cin>>n;
-	int cnt[5]={0};
-	for(int i=1;i<=n;i++)
-	{
-		cin>>v;
-		cnt[v]++;
+
+int main() {
+    int n;
+    cin>>n;
+    vi v(n);
+    for(auto &i : v) in(i);
+    int m = 1001, d = 0;
+    d = abs(v[0] - v[n-1]);
+    m = min(m,d);
+    int idx1 = 1,idx2 = n;
+    for(int i=0; i<n-1; i++){
+        d = abs(v[i] - v[i+1]);
+        if(m > d){
+            m = d;
+            idx1 = i+1;
+            idx2 = i+2;
+        }
     }
-	int ans=cnt[4]+cnt[3];
-	if(cnt[3]<=cnt[1])
-		cnt[1]-=cnt[3];
-	else
-		cnt[1]=0;
-
-	ans+=cnt[2]/2;
-	if(cnt[2]%2==1)
-	{
-		ans++;
-	    cnt[1]=max(0,cnt[1]-2);
-	}
-
-	ans+=cnt[1]/4;
-	if(cnt[1]%4!=0)
-		ans++;
-	cout<<ans;
+    cout<<idx1<<" "<<idx2<<endl;
+    return 0;
 }

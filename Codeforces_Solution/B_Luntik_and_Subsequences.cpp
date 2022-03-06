@@ -10,7 +10,7 @@
 #define mp make_pair
 #define pb push_back
 #define pob pop_back
-#define ALL(v) v.begin(), v.end()
+#define all(v) v.begin(), v.end()
 #define tc   ll t;     cin>>t;   while(t--)
 #define INF 1000000000000000003
 #define in(x) cin >> (x)
@@ -20,33 +20,21 @@
 #define input  freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-int main(){
-    fastIO;
-    //input;
-    int k;
-    cin>>k;
-    string s;
-    cin>>s;
-    map<char,int>m;
-    for(auto i : s){
-        m[i]+=1;
-    }
-    for(auto i: m){
-        cout<<i.ff;
-    }
-    cout<<endl;
-    sort(s.begin(),s.begin()+s.size());
-    cout<<s<<endl;
-    for(auto it : m){
-        if(it.ss%k!=0){
-            cout<<-1<<endl;
-            return 0;
+int main()
+{
+	//input;
+    tc{
+        int n;
+        ll a;
+        cin >> n;
+        ll ct0 = 0,ct1 = 0;
+        for (int i = 1; i <= n; ++i) {
+            cin >> a;
+            if (a == 0) ct0++;
+            if (a == 1) ct1++;
         }
+        cout << (1ll << ct0) * ct1 << '\n';
     }
-    loop(k){
-        for(int j=0;j<s.size();j+=k){
-            cout<<s[j];
-        }
-    }
-    
+	return 0;
 }
+
